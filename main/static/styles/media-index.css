@@ -1,0 +1,316 @@
+
+
+
+@media (max-width: 1400px){
+    .main-quote-fix{
+    width: 0px;
+    }
+
+}
+
+                                                                            /*Laptop M*/
+@media (max-width: 1200px){
+
+    .star {
+    margin-left : 884px;
+    margin-top: 210px;
+    }
+    .search-input[type="search"]::placeholder {
+  font-family: Inter;
+  /* padding-left: 8px; */
+  font-weight: 500;
+  color: var(--tanner);
+  opacity: 0.5;
+  font-size: 8px; /* Размер шрифта */
+}
+.search-input {
+  text-indent: 2px; /* Устанавливает отступ в 10 пикселей */
+  margin-bottom : 2px;
+}
+.find-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 0;
+  background: url(/static/assets/svgs/search-brownish.svg) 0 0 no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  margin-left: -216px;
+}
+
+.search-input {
+
+    font-size: 8px; /* Замените на желаемый размер */
+    color : var(--tanner);
+}
+
+.hero-pic{
+    height: 720px;
+
+}
+
+.hero-btn {
+    margin-top:546px;
+}
+.main-quote{
+    padding-top : 210px;
+    width : 976px;
+    font-size : 75px;
+}
+.bottom-quote{
+    margin-top: 384px;
+}
+
+.red-stripe{
+    height:  365px;
+}
+.pinkish-stripe{
+    height:  365px;
+    margin-top : -627px;
+}
+
+.catalog__item{
+    scale : 0.7;
+    margin-inline : -56px;
+    margin-bottom : -2px;
+   }
+}
+
+@media (max-width: 1044px) {
+    .main-quote {
+        width: 670px;
+        font-size: 49px;
+    }
+    .star{
+    margin-left : 610px;
+    }
+    .hero-logo{
+    width: 210px;
+    }
+    .bottom-quote{
+    margin-top: 340px;
+    width : 480px;
+    font-size: 21px;
+}
+.catalog__item{
+    scale : 0.6;
+    margin-inline : -78px;
+    margin-bottom : -28px;
+   }
+
+
+.pinkish-stripe{
+    height:  365px;
+    margin-top : -606px;
+}
+.catalog__list{
+margin-top: -404px
+}
+footer{
+    margin-top : 300px;
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                            /*Tablet*/
+@media (max-width: 768px) {
+    .hero-btn {
+    margin-top:500px;
+    width : 260px;
+    height: 42px;
+    font-size : 14px;
+
+
+
+}
+
+.sub-brand {
+    color : var(--brand);
+
+}
+.hero-pic{
+    height: 600px;
+}
+
+
+}
+                                                                            /*Phone L*/
+@media (max-width: 425px) {
+
+
+.main-quote{
+    width: 381px;
+    font-size: 29px;
+    padding-left :24px;
+}
+
+.star {
+        font-size: 24px;
+        margin-left: 374px;
+        margin-top: 169px;
+        width : 0
+}
+
+.hero-logo {
+        width: 141px;
+
+}
+
+.bottom-quote {
+        margin-top: 294px;
+        width: 320px;
+        font-size: 14px;
+        padding-left: 24px;
+    }
+
+.navigation__list{
+    padding-left :24px;
+    padding-right: 24px;
+}
+
+.catalog__item {
+        scale: 0.4;
+        margin-inline: -126px;
+    }
+
+
+.catalog__list {
+    margin-top: -352px;
+}
+.red-stripe{
+    height : 180px;
+}
+.pinkish-stripe{
+    height: 180px;
+    margin-top: -129px;
+}
+.catalog__item{
+margin-bottom: -339px;
+
+}
+
+
+.footer-container{
+    margin-inline: 8px;
+    padding-top: 26px;
+}
+.navigation-footer{
+    scale : 0.8;
+    margin-left: 64px;
+}
+.credits {
+    width: unset;
+    padding-left: 48px;
+ }
+.contact-phone {
+   font-size : 11px;
+}
+.commerce{
+    font-size: 9px;
+}
+
+
+
+
+}
+@media (max-width: 391px) {
+    .catalog__item {
+        scale: 0.371;
+        margin-inline: -131px;
+    }
+    .main-quote {
+        width: 356px;
+        font-size: 26px;
+        padding-left: 24px;
+    }
+    .hero-logo {
+        width: 124px;
+    }
+
+
+}
+                                                                            /*Phone M*/
+
+
+@media (max-width: 375px) {
+footer{
+    margin-top : 300px;
+}
+
+
+    .navigation__list {
+        padding-left : 24px;
+        padding-right: 24px;
+    }
+    .star {
+    width : 0;
+    }
+    .hero-btn {
+    width : 260px;
+    height: 42px;
+    font-size : 14px;
+}
+.hero-pic{
+    height: 568px;
+}
+
+    .hero-btn {
+    margin-top:397px;
+    width : 224px;
+    height: 38px;
+    font-size : 12px;
+}
+.main-quote {
+        width: 281px;
+        font-size: 21px;
+        padding-left: 24px;
+
+}
+
+.hero-logo {
+        width: 107px;
+}
+.bottom-quote{
+        width: 250px;
+        font-size: 11px;
+        margin-top: 275px;
+}
+.catalog__list {
+        margin-top: -366px;
+    }
+
+.catalog__item {
+        scale: 0.34;
+        margin-inline: -136px;
+        margin-bottom : -378px;
+
+}
+.pinkish-stripe{
+    margin-top : -72px;
+}
+
+
+
+
+}
+
+
+@media (max-width: 330px) {
+    .catalog__item {
+            scale: 0.31;
+            margin-inline: -142px;
+
+}
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta
+            name="keywords"
+            content="sawing teeth,machines,пильные зубья,гусеницы"
+    />
+    <meta name="author" content="Well"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/reset.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/header.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/hero.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/category.css'%}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/footer.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/cart.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/media-cart.css' %}?v=1.1"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/media-footer&header.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/404.css' %}?v=1.1"/>
+
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+            rel="stylesheet"
+    />
+
+    <title>Well</title>
+</head>
+<body>
+{% include 'catalog/fixed/navbar.html' %}
+<main>
+    <div class="container column">
+    <div class="error-code">404</div>
+        <span class="error-msg">Мы не смогли найти страницу или товар</span>
+        <form class="cart-form" method="POST" action="">
+                {%csrf_token%}
+                <div>
+                    <div class="total">
+                        Оставить заявку
+                    </div>
+                </div>
+                {% if error_message %}
+                <p class="error">{{ error_message }}</p>
+                {% endif %}
+                <div class="underscore"></div>
+                <div class="total-line"></div>
+                <div>
+                    <label for="fullname"></label>
+                    <input
+                            class="input"
+                            placeholder="ФИО"
+                            type="text"
+                            id="fullname"
+                            name="fullname"
+                            required
+                    />
+                </div>
+                <div>
+                    <label for="email"></label>
+                    <input
+                            placeholder="Email"
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                    />
+                </div>
+                <div>
+                    <label for="phone"></label>
+                    <input
+                            placeholder="Телефон"
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            required
+                    />
+                </div>
+                <div>
+                    <label for="city"></label>
+                    <input placeholder="Город" type="text" id="city" name="city"/>
+                </div>
+                <div>
+                    <label for="note"></label>
+                    <textarea
+                            class="note"
+                            placeholder="Что вас интересует ?"
+                            id="note"
+                            name="note"
+                    ></textarea>
+                </div>
+                <div class="btn-cont">
+                    <button class="sub-btn" type="submit">Отправить</button>
+                </div>
+            </form>
+    </div>
+</main>
+<!-- start footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-left">
+            <img src="/static/assets/svgs/footer-logo.svg" alt="">
+            <h6 class="faq-phone">
+                Вопросы по номеру<br>
+                <span class="contact-phone">+7 (800) 5534-228</span>
+            </h6>
+            <span class="email-address">pochta@mail.ru</span>
+        </div>
+        <div>
+            <nav class="navigation-footer">
+                <h6 class="nav-title">Навигация по сайту</h6>
+                <ul class="navigation__list-footer">
+                    {% for category in categories %}
+                    <li class="navigation__item-footer">
+                        <a href="{% url 'category_catalog' category.slug %}">{{ category.category_name }}</a>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </nav>
+
+            <h6 class="credits">
+                Designed and built with all the love in the world by the <a href="#" class="depo-link">depo.</a><br>
+                <span class="license">Code licensed <a href="#" class="license-link">MIT.</a></span>
+            </h6>
+        </div>
+
+
+    </div>
+    <!-- <div class="bottom-footer">
+
+    </div> -->
+    <div class="dark-stripe">
+        <span class="commerce">© Well, Russia. Все права защищены.</span>
+    </div>
+</footer>
+<!-- end footer -->
+
+<script src="\static\scripts\main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="\static\scripts\hero.js"></script>
+<script src="\static\scripts\index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+{% include 'catalog/fixed/navbar.html '%}
+<body>
+    {% if searched %}
+        <h1>Вы искали {{searched}}</h1>
+        <br>
+        {% for item in items %}
+    <a href="">{{item}}</a><br>
+        {% endfor %}
+    {% else %}
+        <h1>Вы забыли написать что вы ищете...</h1>
+    {% endif %}
+</body>
+</html>

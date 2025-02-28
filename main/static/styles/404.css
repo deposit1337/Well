@@ -1,0 +1,62 @@
+body{
+    background-image : none;
+    background-color : #eee;
+}
+
+.error-code{
+    color: #C12222; font-size: 20vh; font-family: 'Roboto Flex'; font-weight: 800;
+
+}
+
+.error-msg{
+    color: #56423E; font-size: 3vh; font-family: Roboto Flex; font-weight: 800;
+            text-align: center;
+}
+
+.container.column {
+    flex-direction : column;
+    margin-top: 12vh;
+
+}
+
+
+.total{
+    justify-content : center;
+}
+
+@media (max-width: 425px) {
+    .cart-form {
+        scale: 0.74;
+        width: 418px;
+    }
+    .error-code{
+     font-size: 14vh;
+
+}
+}
+.cart-form{
+    margin-top : 24px;
+}
+@media (max-width: 425px) {
+    .footer-container {
+        margin-inline: 8px;
+        padding-top: 26px;
+    }
+    .cart-form{
+    margin-top : -10px;
+}
+}
+
+@media (max-width: 425px) {
+.error-msg{
+    font-size: 2vh;
+    }
+
+}
+
+
+.error{
+    font-size: 0.4vh;
+    color : red;
+
+}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="keywords" content="sawing teeth,machines,пильные зубья,гусеницы"/>
+    <meta name="author" content="Well"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/reset.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/header.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/hero.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/category.css'%}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/footer.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/category-chosen.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/media-footer&header.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/media-catalog.css' %}?v=1.1"/>
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+        rel="stylesheet"
+    />
+    {{ cart_data|json_script:"cart-data" }}
+    <title>Well</title>
+</head>
+
+<body>
+<!-- start header -->
+{% include 'catalog/fixed/navbar.html' %}
+<!-- end header -->
+
+<!-- start main -->
+<main>
+    <div class="grey-stripe">
+        <div class="container">
+            <div class="resolution">
+                <div class="nav-on-page"><a href="{% url 'home_page' %}">Главная</a> | <a class="current-link" href="{% url 'category_catalog' category.slug %}">{{category.category_name}}</a></div>
+                <h3 class="category-item">{{category.category_name}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <section class="items-sec">
+            <ul class="category-item__list">
+                <div class="items-container-triple">
+                    {% for item in first_three_items %}
+                    <li class="category-items__item">
+                        <div class="category-item-link">
+                            <a href="{% url 'item_detail' category_slug=category.slug item_id=item.id %}">
+                                <img src="{{ item.main_picture.url }}" alt="category item" width="430px" height="452px">
+                            </a>
+                            <h6 class="name-of-brand">{{item.brand}}</h6>
+                            <h6 class="vendor">{{item.vendor}}</h6>
+                            <button class="{% if item.id in cart_data %}add-to-cart-btn off{% else %}add-to-cart-btn on{% endif %}"
+                                    id="{{ item.id }}" data-id="{{ item.id }}">
+                                {% if item.id in cart_data %}Удалить{% else %}В корзину{% endif %}
+                            </button>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </div>
+                 <div class="items-container-triple">
+                    {% for item in next_three_items %}
+                    <li class="category-items__item">
+                        <div class="category-item-link">
+                            <a href="{% url 'item_detail' category_slug=category.slug item_id=item.id %}">
+                                <img src="{{ item.main_picture.url }}" alt="category item" width="430px" height="452px">
+                            </a>
+                            <h6 class="name-of-brand">{{item.brand}}</h6>
+                            <h6 class="vendor">{{item.vendor}}</h6>
+                            <button class="{% if item.id in cart_data %}add-to-cart-btn off{% else %}add-to-cart-btn on{% endif %}"
+                                    id="{{ item.id }}" data-id="{{ item.id }}">
+                                {% if item.id in cart_data %}Удалить{% else %}В корзину{% endif %}
+                            </button>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </div>
+            </ul>
+        </section>
+    </div>
+</main>
+<!-- end main -->
+
+<!-- start footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-left">
+            <img src="/static/assets/svgs/footer-logo.svg" alt="">
+            <h6 class="faq-phone">
+                Вопросы по номеру<br>
+                <span class="contact-phone">+7 (800) 5534-228</span>
+            </h6>
+            <span class="email-address">pochta@mail.ru</span>
+        </div>
+        <div>
+            <nav class="navigation-footer">
+                <h6 class="nav-title">Навигация по сайту</h6>
+                <ul class="navigation__list-footer">
+                    {% for category in categories %}
+                    <li class="navigation__item-footer">
+                        <a href="{% url 'category_catalog' category.slug %}">{{ category.category_name }}</a>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </nav>
+
+        <h6 class="credits">
+            Designed and built with all the love in the world by the <a href="#" class="depo-link">depo.</a><br>
+            <span class="license">Code licensed <a href="#" class="license-link">MIT.</a></span>
+        </h6>
+        </div>
+
+
+    </div>
+    <!-- <div class="bottom-footer">
+
+    </div> -->
+    <div class="dark-stripe">
+        <span class="commerce">© Well, Russia. Все права защищены.</span>
+    </div>
+</footer>
+<!-- end footer -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="\static\scripts\index.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.innerWidth <= 768) {  // Проверка ширины экрана
+            const containers = document.querySelectorAll('.items-container-triple');
+
+            containers.forEach(container => {
+                const items = container.querySelectorAll('.category-items__item');
+
+                switch (items.length) {
+                    case 1:
+                        container.style.height = '209px';
+                        break;
+                    case 2:
+                        container.style.height = '420px';
+                        break;
+                    case 3:
+                        container.style.height = '629px';
+                        break;
+                    default:
+                        container.style.height = 'auto'; // Можно установить произвольную высоту для большего количества элементов
+                        break;
+                }
+            });
+        }
+    });
+
+    // Можно добавить обработчик для изменения размера окна, если нужно динамически обновлять высоту
+    window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) {
+            const containers = document.querySelectorAll('.items-container-triple');
+
+            containers.forEach(container => {
+                const items = container.querySelectorAll('.category-items__item');
+
+                switch (items.length) {
+                    case 1:
+                        container.style.height = '209px';
+                        break;
+                    case 2:
+                        container.style.height = '420px';
+                        break;
+                    case 3:
+                        container.style.height = '629px';
+                        break;
+                    default:
+                        container.style.height = 'auto';
+                        break;
+                }
+            });
+        }
+    });
+</script>
+<script>
+$(document).ready(function() {
+    const cartData = JSON.parse(document.getElementById('cart-data').textContent);
+    console.log(cartData);
+
+    // Инициализация всех кнопок
+    $('.add-to-cart-btn').each(function() {
+        const buttonId = this.id;
+        // Проверяем значение в localStorage для каждой кнопки
+        const value = localStorage.getItem(buttonId);
+        if (value === '2' && buttonId in cartData) {
+            $(this).removeClass('on').addClass('off').text('Удалить');
+        } else {
+            $(this).removeClass('off').addClass('on').text('В корзину');
+            localStorage.setItem(buttonId, '1');
+        }
+    });
+
+    // Обработчик клика на кнопки с классом .add-to-cart-btn
+    $('.add-to-cart-btn').click(function(e) {
+        e.preventDefault();
+        var button = $(this);
+        var itemId = button.data('id');
+
+        var currentValue = parseInt(localStorage.getItem(itemId)) || 1;
+
+        // Меняем значение на 1 или 2, в зависимости от текущего состояния
+        if (currentValue === 1) {
+            currentValue = 2;
+            button.removeClass('on').addClass('off').text('Удалить');
+        } else {
+            currentValue = 1;
+            button.removeClass('off').addClass('on').text('В корзину');
+        }
+
+        // Записываем новое значение в localStorage
+        localStorage.setItem(itemId, currentValue);
+
+        // Отправка AJAX запроса на добавление или удаление из корзины
+        if (currentValue === 2) {
+            $.ajax({
+                type: 'POST',
+                url: '{% url "basket:basket_add" %}',
+                data: {
+                    itemid: itemId,
+                    itemqty: 1,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                success: function(json) {
+                    document.getElementById('basket-qty').innerHTML = json.qty;
+                },
+                error: function(xhr, errmsg, err) {
+                    alert('Ошибка при добавлении товара в корзину.');
+                }
+            });
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: '{% url "basket:basket_delete" %}',
+                data: {
+                    itemid: itemId,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'delete'
+                },
+                success: function(json) {
+                    document.getElementById('basket-qty').innerHTML = json.qty;
+                },
+                error: function(xhr, errmsg, err) {
+                    alert('Ошибка при удалении товара из корзины.');
+                }
+            });
+        }
+    });
+});
+</script>
+
+</body>
+</html>

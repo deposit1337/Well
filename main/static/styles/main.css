@@ -1,0 +1,136 @@
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900 */
+
+/* .inter-<uniquifier> {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+} */
+
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 1000
+
+.roboto-flex-<uniquifier> {
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "wdth" 100,
+    "GRAD" 0,
+    "XOPQ" 96,
+    "XTRA" 468,
+    "YOPQ" 79,
+    "YTAS" 750,
+    "YTDE" -203,
+    "YTFI" 738,
+    "YTLC" 514,
+    "YTUC" 712;
+} */
+
+/* start colors */
+:root {
+  --white: #fff9f6;
+  --tan: #bea6a1;
+  --tanner: #56423e;
+  --brand: #c12222;
+}
+/* start fonts */
+:root {
+  --main-font: ;
+  font-family: "Inter", sans-serif;
+  --secondary-font: ;
+  font-family: "Roboto Flex", sans-serif;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  background-image: url(/static/assets/pictures/concrete-wall.png);
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: none;
+}
+
+.not {
+  /* position: absolute; */
+  /* top: 0; */
+  transition: 0.6s;
+  opacity: 0;
+  /* display: none; */
+  /* background-color: transparent; */
+}
+
+.smooth {
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.none {
+  display: none;
+}
+
+.main-quote-fix {
+  position: absolute;
+  top: 0;
+  padding-top: 330px;
+  padding-left: 56px;
+  width: 1327px;
+  height: 197px;
+  color: #fff9f6;
+  font-size: 86px;
+  font-family: Inter;
+  font-weight: 900;
+  text-transform: uppercase;
+  word-wrap: break-word;
+  z-index: 1;
+}
+
+
+.expanded {
+  width: 300px; /* Установка ширины элемента при раскрытии */
+}
+
+.test {
+  opacity: 1;
+  transition: 1s;
+}
+
+.navigation__item{
+color:white
+}
+#basket-qty{
+    margin-left: 18px;
+    display: flex;
+    position: absolute;
+    color: var(--brand);
+    z-index: 100000;
+    padding-right: 4px;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    background-color: var(--white);
+    width: 24px;
+    height: 20px;
+    align-content: center;
+    justify-content: flex-end;
+     border-top-left-radius: 18px;
+    font-size: 14px;
+}
+
+
+.nav-on-page{
+    color : red;
+
+}

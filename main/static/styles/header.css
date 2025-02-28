@@ -1,0 +1,155 @@
+.navigation__list {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  width: 100%;
+  /* border: 2px solid red; */
+  padding-left: 56px;
+  padding-right: 56px;
+  /* margin-top: */
+  padding-top: 42px;
+  padding-bottom: 32px;
+}
+
+.navigation__item {
+  /* padding: 20px; */
+  z-index: 3;
+}
+.icons-container {
+  display: flex;
+  gap: 16px;
+}
+.navigation {
+  display: flex;
+}
+
+header {
+  /* width: 1440px; */
+}
+
+.well-icon-link :hover,
+.navigation__item :hover {
+  transition: 0.3s ease;
+  opacity: 0.87;
+}
+.well-icon-link:not(:hover),
+.navigation__item:not(:hover) {
+  transition: 1s ease;
+}
+
+/* start search form */
+
+.search-form {
+  z-index: 10;
+  /* background-color: var(--white); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -7px;
+  background-color: var(--white);
+  border-radius: 16px;
+  /* border: 2px var(--tanner) solid; */
+}
+
+.search-input {
+  border: none;
+  height: 36px;
+  width: 300px;
+  border-radius: 16px;
+  /* border: 2px var(--tanner) solid; */
+}
+
+.find-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 0;
+  background: url(/static/assets/svgs/search-brownish.svg) 0 0 no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  margin-left: -38px;
+}
+
+.search-input[type="search"]::placeholder {
+  font-family: Inter;
+  /* padding-left: 8px; */
+  font-weight: 500;
+  color: var(--tanner);
+  opacity: 0.5;
+  font-size: 14px; /* Размер шрифта */
+}
+
+/* Добавляем стили для анимации разворачивания поля поиска */
+.search-form {
+  height: 34px;
+  width: 0;
+  overflow: hidden;
+  transition: width 0.3s ease; /* Анимация изменения ширины */
+}
+
+.expanded {
+  width: 300px;
+}
+
+.hidden {
+  display: none;
+}
+
+.icons-container {
+  display: flex;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.search-form {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.3s;
+}
+.find-btn {
+  opacity: 0;
+}
+
+.test {
+  opacity: 1;
+  transition: 1s;
+}
+
+.search-form {
+  margin-top: -4px;
+  height: 31px;
+}
+
+.search-input:focus {
+
+  background-color: var(--white); /* Изменение цвета фона при активации */
+  /* box-shadow: 0 0 5px blue; Добавление тени при активации */
+  outline: none; /* Убрать стандартный контур фокуса */
+  caret-color: var(--brand); /* изменить цвет курсора */
+  ;
+
+}
+/* Скрыть дефолтную кнопку для очистки текста в поле ввода поиска */
+.search-input::-webkit-search-clear-button {
+  display: none;
+}
+
+.search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search-input {
+  text-indent: 8px; /* Устанавливает отступ в 10 пикселей */
+}
+
+
+
+
+.search-input{
+    margin-left : 0px;
+    margin-top : 3px;
+}
+

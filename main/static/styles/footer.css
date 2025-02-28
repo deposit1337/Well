@@ -1,0 +1,115 @@
+
+footer{
+    background-image: url(/static/assets/pictures/footer.png);
+    width: 100%;
+    height: 440px;
+    color: #FFF9F6;
+    margin-top : 503px;
+    position : relative;
+}
+
+.faq-phone{
+    color: #FFF9F6; font-size: 11px; font-family: 'Inter'; font-weight: 500;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+.contact-phone{
+    color: #C12222;
+    font-size: 11px;
+    font-family: 'Inter';
+    font-weight: 500;
+    margin-top: 12px;
+}
+.footer-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: 56px;
+    margin-top: 116px;
+    padding-top: 48px;
+
+}
+
+.contact-phone{
+    color: #C12222; font-size: 16px; font-family: 'Inter'; font-weight: 800;
+}
+
+.email-address{
+
+    color: #FFF9F6; font-size: 16px; font-family: 'Inter'; font-weight: 900;
+    margin-top: 24px;
+}
+
+.nav-title{
+
+    color: #FFF9F6; font-size: 19px; font-family: 'Inter'; font-weight: 900;
+}
+
+.navigation__item-footer{
+    color: #FFF9F6; font-size: 16px; font-family: 'Inter'; font-weight: 600; line-height: 28px;
+    margin-top: 8px;
+
+}
+.credits{
+    color: #FFF9F6; font-size: 10px; font-family: 'Roboto Flex'; font-weight: 400;
+    margin-top: 50px;
+    margin-bottom: 24px;
+}
+.depo-link{
+    font-style: italic; font-weight: 500; text-decoration: underline;
+
+}
+
+.license{
+    color: #BEA6A1;
+    opacity: 0.6;
+    font-size: 10px; font-family: 'Roboto Flex'; font-weight: 400;
+}
+.commerce{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000007e;
+    height: 36px;
+    opacity: 0.7;
+
+}
+.navigation-footer{
+    text-align: end;
+}
+
+.footer-left{
+    margin-top: -111px;
+}
+
+.dark-stripe{
+    width : 100%;
+    position : absolute;
+    bottom : 0;
+    margin-bottom : 38px;
+}
+
+
+footer a{
+    color : var(--white);
+    opacity:  1;
+    transition: 0.5s ease;
+
+
+}
+
+footer a:hover{
+    opacity : 0.5;
+    transition: 0.5s ease;
+}
+
+
+.nav-on-page a{
+    color: unset;
+}
+
+
+.nav-on-page .current-link {
+  color: #c12222;
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+<head>
+    <meta charset="UTF-8"/>
+    <meta
+            name="keywords"
+            content="sawing teeth,machines,пильные зубья,гусеницы"
+    />
+    <meta name="author" content="Well"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/reset.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/hero.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/category.css'%}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/footer.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/cart.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/header.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/media-footer&header.css' %}?v=1.1"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/media-cart.css' %}?v=1.1"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+            rel="stylesheet"
+    />
+    <style>
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        input[type=number]:focus {
+    outline: none;
+}
+    </style>
+    <title>Item of category</title>
+</head>
+<body>
+
+{% include 'catalog/fixed/navbar.html' %}
+
+<main>
+    <div class="grey-stripe">
+        <div class="container">
+            <div class="resolution">
+                <div class="nav-on-page">
+                    <a href="{% url 'home_page' %}">Главная</a> |
+                    <a class="current-link">Корзина</a>
+                </div>
+                <h3 class="category-item">Корзина</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <section class="cart">
+            <div class="cart__container">
+                <ul class="cart__list">
+                    {% for thing in basket %}
+                    {% with item=thing.item %}
+                    <li class="cart__item" data-price="{{item.price}}">
+                        <button class="cross" id="delete-btn" data-id="{{item.id}}"></button>
+
+
+                        <div class="test" href="">
+                            <div class="cart-pic-cont">
+                                <img
+                                        class="cart-pic"
+                                        src="{{item.main_picture.url}}"
+                                        alt="cart-item"
+                                />
+                            </div>
+                            <div>
+                                <p class="price" id="price-item" data-item="{{item.id}}">{{thing.total_price}}₽</p>
+                                <h6 class="name-of-item-cart">
+                                    {{item.full_name}}
+                                </h6>
+                                <div class="container-qnty">
+                            <span class="qnty">
+                              Кол-во:
+                              <input class="amount" type="number" value="{{thing.qty}}" id="select{{item.id}}" name="quantity" min="1" max="200">
+                            </span>
+
+                                    <button id="update-btn" class="update" data-index="{{item.id}}"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="name-of-brand-cart">{{item.brand}}</h6>
+                        <h6 class="vendor-cart">{{item.vendor}}</h6>
+                    </li>
+                    {% endwith %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <form class="cart-form" method="POST" action="{% url 'basket:basket_summary' %}">
+                {%csrf_token%}
+                <div>
+                    <div class="total">
+                        Итог*
+                        <div id="subtotall">{{basket.get_total_price}}₽</div>
+                        <input type="hidden" id="subtotal" name="subtotal" value="{{basket.get_total_price}}">
+                    </div>
+                </div>
+                {% if error_message %}
+                <p class="error">{{ error_message }}</p>
+                {% endif %}
+                <div class="underscore"></div>
+                <div class="total-line"></div>
+                <div>
+                    <label for="fullname"></label>
+                    <input
+                            class="input"
+                            placeholder="ФИО"
+                            type="text"
+                            id="fullname"
+                            name="fullname"
+                            required
+                    />
+                </div>
+                <div>
+                    <label for="email"></label>
+                    <input
+                            placeholder="Email"
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                    />
+                </div>
+                <div>
+                    <label for="phone"></label>
+                    <input
+                            placeholder="Телефон"
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            required
+                    />
+                </div>
+                <div>
+                    <label for="city"></label>
+                    <input placeholder="Город" type="text" id="city" name="city"/>
+                </div>
+                <div>
+                    <label for="note"></label>
+                    <textarea
+                            class="note"
+                            placeholder="Примечание (при необходимости)"
+                            id="note"
+                            name="note"
+                    ></textarea>
+                </div>
+                <div class="btn-cont">
+                    <button class="sub-btn" type="submit">Отправить заявку</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</main>
+<footer>
+    <div class="footer-container">
+        <div class="footer-left">
+            <img src="/static/assets/svgs/footer-logo.svg" alt="">
+            <h6 class="faq-phone">
+                Вопросы по номеру<br>
+                <span class="contact-phone">+7 (800) 5534-228</span>
+            </h6>
+            <span class="email-address">pochta@mail.ru</span>
+        </div>
+        <div>
+            <nav class="navigation-footer">
+                <h6 class="nav-title">Навигация по сайту</h6>
+                <ul class="navigation__list-footer">
+                    {% for category in categories %}
+                    <li class="navigation__item-footer">
+                        <a href="{% url 'category_catalog' category.slug %}">{{ category.category_name }}</a>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </nav>
+
+            <h6 class="credits">
+                Designed and built with all the love in the world by the <a href="#" class="depo-link">depo.</a><br>
+                <span class="license">Code licensed <a href="#" class="license-link">MIT.</a></span>
+            </h6>
+        </div>
+
+
+    </div>
+    <!-- <div class="bottom-footer">
+
+    </div> -->
+    <div class="dark-stripe">
+        <span class="commerce">© Well, Russia. Все права защищены.</span>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="\static\scripts\index.js"></script>
+<script src="\static\scripts\cart.js"></script>
+
+<script>
+    $(document).on('click','.cross',function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url "basket:basket_delete" %}',
+            data: {
+                itemid : $(this).data('id'),
+                csrfmiddlewaretoken : '{{csrf_token}}',
+                action: 'delete',
+            },
+            success: function(json){
+                document.getElementById('basket-qty').innerHTML = json.qty
+                document.getElementById('subtotall').innerHTML = json.subtotal + '₽'
+            },
+            error: function(xhr,errmsg,err){}
+         });
+
+    })
+
+
+
+<!-- update  Item  -->
+$(document).on('click', '.update', function(e) {
+  e.preventDefault();
+  var button = $(this);
+  var itemid = button.data('index');
+  var quantityInput = $('#select' + itemid);
+  var newQuantity = quantityInput.val();
+
+  $.ajax({
+      type: 'POST',
+      url: '{% url "basket:basket_update" %}',
+      data: {
+          itemid: itemid,
+          itemqty: newQuantity,
+          csrfmiddlewaretoken: '{{csrf_token}}',
+          action: 'update',
+      },
+      success: function(json) {
+          var itemTotalPrice = newQuantity * button.closest('.cart__item').data('price');
+          button.closest('.cart__item').find('.price').text(itemTotalPrice + '₽');
+          document.getElementById('basket-qty').innerHTML = json.qty
+          document.getElementById('subtotall').innerHTML = json.subtotal + '₽'
+      },
+      error: function(xhr, errmsg, err) {
+
+      }
+  });
+});
+
+</script>
+<script>
+    let formSubmitted = false;
+    const form = document.querySelector('.cart-form');
+
+    form.addEventListener('submit', function(event) {
+        if (formSubmitted) {
+            event.preventDefault(); // Предотвращаем отправку формы, если уже была отправка
+        } else {
+            formSubmitted = true;
+            setTimeout(() => {
+                formSubmitted = false;
+            }, 3000); // 3000 миллисекунд = 3 секунды
+        }
+    });
+</script>
+<script>
+
+document.querySelector('#update-btn').addEventListener('click', function(event) {
+
+  let input = document.querySelector('.amount');
+  let value = parseInt(input.value, 10);
+
+
+  if (isNaN(value) || value < 1 || value > 200) {
+    alert('Введите корректное значение (от 1 до 200).');
+    input.value = 1;
+    return;
+  }
+
+});
+
+
+</script>
+
+<!-- end main -->
+</body>
+</html>
